@@ -1,0 +1,10 @@
+// إعدادات Firebase لمشروع سبر
+window.SABR_FIREBASE = {
+  apiKey: "AIzaSyDPKdJr-bfauUTS-brW4WQSSttLuBHaJfc",
+  authDomain: "sabr-6b8f3.firebaseapp.com",
+  projectId: "sabr-6b8f3",
+  storageBucket: "sabr-6b8f3.firebasestorage.app",
+  messagingSenderId: "511215165485",
+  appId: "1:511215165485:web:53c8bec35a2f5cc99ad8a4",
+  measurementId: "G-J3PK7M560E"
+};
