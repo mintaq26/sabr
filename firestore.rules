@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // إعدادات الحلقة: أسماء العضوات تظهر في شاشة الدخول
+    match /sabr/config {
+      allow read: if true;
+      allow create: if !exists(/databases/$(database)/documents/sabr/config) || request.auth != null;
+      allow update, delete: if request.auth != null;
+    }
+    // مساحتي: لا يقرؤها ولا يكتبها إلا صاحبتها
+    match /data/users/{uid}/{rest=**} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    // بقية بيانات الحلقة: للعضوات المسجّلات فقط
+    match /{coll}/{id} {
+      allow read, write: if request.auth != null && coll != "data" && coll != "sabr";
+    }
+  }
+}
